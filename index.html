@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="Potato Savior — a Minecraft 1.16.5 Fabric modpack focused on performance for low-end PCs.">
+  <title>Potato Savior | By Baianex</title>
+
+  <style>
+    :root {
+      --bg: #101510;
+      --panel: #19221a;
+      --green: #a3ff68;
+      --text: #f2f5ee;
+      --muted: #a5b1a3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #29352a;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      margin-left: 18px;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(ellipse at top, #253b24 0%, transparent 65%);
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #456a38;
+      border-radius: 50px;
+      padding: 5px 13px;
+      color: var(--green);
+      font-size: 0.8rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      background: var(--green);
+      color: #13200e;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #c0ff9b;
+    }
+
+    .small-note {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 35px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid #29352a;
+      border-radius: 12px;
+      padding: 20px 10px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.25rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #29352a;
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .mod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .mod {
+      background: #111812;
+      border: 1px solid #29352a;
+      border-radius: 8px;
+      padding: 12px 15px;
+      color: #dce8d8;
+    }
+
+    .mod::before {
+      content: "✦ ";
+      color: var(--green);
+    }
+
+    .steps {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    .steps li {
+      margin: 12px 0;
+      padding-left: 5px;
+    }
+
+    .steps strong {
+      color: var(--text);
+    }
+
+    .warning {
+      margin-top: 20px;
+      border-left: 3px solid var(--green);
+      padding: 12px 16px;
+      background: #111812;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid #29352a;
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    footer strong {
+      color: var(--green);
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero {
+        padding: 70px 0 55px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">🥔 POTATO <span>SAVIOR</span></div>
+        <div>
+          <a href="#about">About</a>
+          <a href="#mods">Mods</a>
+          <a href="#install">Installation</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="tag">THE LOW-END PC SURVIVAL KIT</span>
+
+        <h1>YOUR PC IS A<br><span>POTATO?</span></h1>
+
+        <p>
+          Meet Potato Savior: a Minecraft modpack focused on improving
+          performance and making the game more enjoyable on low-end PCs.
+          Because not everyone has a gaming monster.
+        </p>
+
+        <a
+          class="button"
+          href="https://www.mediafire.com/file/32nq0mpi0el5szd/potatosavior.zip.zip/file"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ↓ DOWNLOAD POTATO SAVIOR
+        </a>
+
+        <div class="small-note">
+          Minecraft 1.16.5 · Fabric · Free download
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>1.16.5</strong>
+            <span>Minecraft version</span>
+          </div>
+          <div class="stat">
+            <strong>Fabric</strong>
+            <span>Mod loader</span>
+          </div>
+          <div class="stat">
+            <strong>Low-end</strong>
+            <span>Performance focused</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">What is Potato Savior?</h2>
+        <p class="section-intro">
+          A little help for PCs that are fighting for their lives.
+        </p>
+
+        <div class="panel">
+          <p>
+            Potato Savior is a Minecraft modpack created to improve
+            performance using a collection of optimization, memory,
+            rendering and quality-of-life mods.
+          </p>
+          <br>
+          <p>
+            The goal is simple: help more players enjoy Minecraft,
+            even on older hardware. No expensive PC required.
+          </p>
+          <br>
+          <p>
+            <strong>Created by Baianex.</strong>
+            Built for potatoes, tested with potatoes. 🥔
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mods">
+      <div class="container">
+        <h2 class="section-title">Under the hood</h2>
+        <p class="section-intro">
+          A selection of the mods included in Potato Savior.
+        </p>
+
+        <div class="mod-grid">
+          <div class="mod">AppleSkin</div>
+          <div class="mod">Better Beds</div>
+          <div class="mod">Boat Item View</div>
+          <div class="mod">Chunky</div>
+          <div class="mod">Crash Assistant</div>
+          <div class="mod">Cull Leaves</div>
+          <div class="mod">Dynamic FPS</div>
+          <div class="mod">Entity Culling</div>
+          <div class="mod">Enhanced Block Entities</div>
+          <div class="mod">Fabric API</div>
+          <div class="mod">FerriteCore</div>
+          <div class="mod">ImmediatelyFast</div>
+          <div class="mod">Indium</div>
+          <div class="mod">Krypton</div>
+          <div class="mod">LambdaDynamicLights</div>
+          <div class="mod">LazyDFU</div>
+          <div class="mod">Lithium</div>
+          <div class="mod">Memory Leak Fix</div>
+          <div class="mod">Mod Menu</div>
+          <div class="mod">ModernFix</div>
+          <div class="mod">Phosphor</div>
+          <div class="mod">Presence Footsteps</div>
+          <div class="mod">Reese's Sodium Options</div>
+          <div class="mod">Smooth Boot</div>
+          <div class="mod">Sodium</div>
+          <div class="mod">Sodium Extra</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="container">
+        <h2 class="section-title">How to install</h2>
+        <p class="section-intro">
+          Get your potato ready in a few simple steps.
+        </p>
+
+        <div class="panel">
+          <ol class="steps">
+            <li>
+              <strong>Download the ZIP.</strong>
+              Use the download button at the top of this page.
+            </li>
+            <li>
+              <strong>Install Minecraft 1.16.5 and Fabric.</strong>
+              Use a compatible Fabric Loader version.
+            </li>
+            <li>
+              <strong>Install the mods.</strong>
+              Follow the included pack instructions and ensure all
+              required mod files match Minecraft 1.16.5.
+            </li>
+            <li>
+              <strong>Launch and play!</strong>
+              Start Minecraft using your Fabric installation.
+            </li>
+          </ol>
+
+          <div class="warning">
+            Important: check the included README for the exact
+            installation method and requirements. Back up existing
+            worlds before changing mod setups.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="panel" style="text-align:center">
+          <h2 class="section-title">Save your potato. 🥔</h2>
+          <p class="section-intro">
+            Less struggling. More Minecraft.
+          </p>
+          <a
+            class="button"
+            href="https://www.mediafire.com/file/32nq0mpi0el5szd/potatosavior.zip.zip/file"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DOWNLOAD NOW
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Made with 🥔 by <strong>Baianex</strong>.</p>
+      <p>
+        Potato Savior is an independent community project and is not
+        affiliated with Mojang or Microsoft.
+      </p>
+        <p>Minecraft is a trademark of Microsoft.</p>
+    </div>
+  </footer>
+</body>
+</html>
